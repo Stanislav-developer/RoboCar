@@ -28,10 +28,10 @@ U8G2_SSD1306_128X64_NONAME_F_HW_I2C u8g2(U8G2_R0, U8X8_PIN_NONE);
 // --- ЗМІННІ ---
 // Коефіцієнти з твого старого коду
 float factorA = 1.0;  // Правий мотор
-float factorB = 0.87; // Лівий мотор
+float factorB = 0.75; // Лівий мотор
 
 int currentSpeed = 0;
-int maxSpeed = 90; 
+int maxSpeed = 50; 
 int minSpeed = 30;
 
 // Змінні для таймера
@@ -68,14 +68,14 @@ void setup() {
   for (int i = 0; i <= maxSpeed; i++) {
     currentSpeed = i;
     moveForward(currentSpeed);
-    delay(40); 
+    delay(10); 
   }
 }
 
 void loop() {
   // === ПЕРЕВІРКА ФІНІШУ ===
   if (digitalRead(PIN_BUMPER) == LOW) {
-    finishRoutine(); // Викликаємо нову функцію фінішу
+    finishRoutine(); 
   }
 
   // Отримання дистанції (Основний сенсор)
